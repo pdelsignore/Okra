@@ -47,5 +47,8 @@ next-env.d.ts
 *.db-shm
 *.db-wal
 
+# migration scripts (contain exported data)
+scripts/sqlite-export.json
+
 # design source files
 *.psd

@@ -36,7 +36,7 @@ export default async function ObjectivesPage() {
       {withProgress.length === 0 ? (
         <div className="okra-card" style={{ padding: 48, textAlign: "center" }}>
           <p style={{ fontSize: 13, color: "#828282", marginBottom: 10 }}>No objectives yet.</p>
-          <Link href="/objectives/new" style={{ fontSize: 13, fontWeight: 600, color: "#3D7BFF", textDecoration: "none" }}>
+          <Link href="/objectives/new" style={{ fontSize: 13, fontWeight: 600, color: "#0892A5", textDecoration: "none" }}>
             Create your first objective →
           </Link>
         </div>

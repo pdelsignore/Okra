@@ -24,7 +24,7 @@ interface Objective { id: string; title: string; description: string | null; sta
 
 const STATUS_STYLE: Record<string, { bg: string; color: string; label: string }> = {
   DONE:        { bg: "rgba(39,174,96,0.12)",   color: "#27AE60", label: "Done" },
-  IN_PROGRESS: { bg: "rgba(61,123,255,0.10)",  color: "#3D7BFF", label: "In Progress" },
+  IN_PROGRESS: { bg: "rgba(8,146,165,0.10)",  color: "#0892A5", label: "In Progress" },
   TODO:        { bg: "rgba(130,130,130,0.10)", color: "#828282", label: "To Do" },
 };
 
@@ -215,7 +215,7 @@ export default function ObjectiveDetailClient({
   return (
     <div style={{ maxWidth: 800, margin: "0 auto" }}>
       <div style={{ marginBottom: 20 }}>
-        <Link href="/objectives" style={{ fontSize: 13, fontWeight: 600, color: "#3D7BFF", textDecoration: "none" }}>
+        <Link href="/objectives" style={{ fontSize: 13, fontWeight: 600, color: "#0892A5", textDecoration: "none" }}>
           ← Objectives
         </Link>
       </div>
@@ -251,12 +251,12 @@ export default function ObjectiveDetailClient({
                 <p style={{ fontSize: 13, color: "#828282", marginBottom: 10 }}>{objective.description}</p>
               )}
               <div style={{ display: "flex", gap: 16 }}>
-                <button onClick={() => setEditingObjective(true)} style={{ fontSize: 12, color: "#3D7BFF", fontWeight: 600, background: "none", border: "none", cursor: "pointer" }}>Edit</button>
+                <button onClick={() => setEditingObjective(true)} style={{ fontSize: 12, color: "#0892A5", fontWeight: 600, background: "none", border: "none", cursor: "pointer" }}>Edit</button>
                 <button onClick={deleteObjective} style={{ fontSize: 12, color: "#EB5757", background: "none", border: "none", cursor: "pointer" }}>Delete</button>
               </div>
             </div>
             <div style={{ textAlign: "right", flexShrink: 0, marginLeft: 24 }}>
-              <span style={{ fontSize: 36, fontWeight: 800, color: "#3D7BFF", letterSpacing: "-0.03em" }}>
+              <span style={{ fontSize: 36, fontWeight: 800, color: "#EB5757", letterSpacing: "-0.03em" }}>
                 {overallProgress}%
               </span>
               <p style={{ fontSize: 11, color: "#828282" }}>overall</p>
@@ -355,7 +355,7 @@ export default function ObjectiveDetailClient({
                           <p style={{ fontSize: 14, fontWeight: 600, color: "#0E1B3D", marginBottom: 2 }}>{kr.title}</p>
                           {kr.description && <p style={{ fontSize: 12, color: "#828282" }}>{kr.description}</p>}
                           <div style={{ display: "flex", gap: 12, marginTop: 4 }}>
-                            <button onClick={() => openEditKr(kr)} style={{ fontSize: 11, color: "#3D7BFF", fontWeight: 600, background: "none", border: "none", cursor: "pointer" }}>Edit</button>
+                            <button onClick={() => openEditKr(kr)} style={{ fontSize: 11, color: "#0892A5", fontWeight: 600, background: "none", border: "none", cursor: "pointer" }}>Edit</button>
                             <button onClick={() => deleteKr(kr.id, kr.title)} style={{ fontSize: 11, color: "#EB5757", background: "none", border: "none", cursor: "pointer" }}>Delete</button>
                           </div>
                         </div>
@@ -369,8 +369,8 @@ export default function ObjectiveDetailClient({
                             style={{
                               marginLeft: 6, fontSize: 10, fontWeight: 600, fontFamily: "monospace",
                               padding: "2px 6px", borderRadius: 4,
-                              background: kr.type === "COUNT" ? "rgba(61,123,255,0.10)" : "rgba(130,130,130,0.10)",
-                              color: kr.type === "COUNT" ? "#3D7BFF" : "#828282",
+                              background: kr.type === "COUNT" ? "rgba(8,146,165,0.10)" : "rgba(130,130,130,0.10)",
+                              color: kr.type === "COUNT" ? "#0892A5" : "#828282",
                             }}
                           >
                             {kr.type === "COUNT" ? "#" : "%"}
@@ -418,7 +418,7 @@ export default function ObjectiveDetailClient({
                         </div>
                       </div>
                     ) : (
-                      <button onClick={() => setKpiFormOpen(kr.id)} style={{ marginTop: 12, fontSize: 12, fontWeight: 600, color: "#3D7BFF", background: "none", border: "none", cursor: "pointer" }}>
+                      <button onClick={() => setKpiFormOpen(kr.id)} style={{ marginTop: 12, fontSize: 12, fontWeight: 600, color: "#0892A5", background: "none", border: "none", cursor: "pointer" }}>
                         + Add KPI
                       </button>
                     )}

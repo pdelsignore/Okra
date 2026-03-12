@@ -39,7 +39,7 @@ export default async function GapsPage() {
       {rows.length === 0 ? (
         <div className="okra-card" style={{ padding: 48, textAlign: "center" }}>
           <p style={{ fontSize: 13, color: "#828282", marginBottom: 10 }}>No active objectives with key results.</p>
-          <Link href="/objectives/new" style={{ fontSize: 13, fontWeight: 600, color: "#3D7BFF", textDecoration: "none" }}>Create an objective →</Link>
+          <Link href="/objectives/new" style={{ fontSize: 13, fontWeight: 600, color: "#0892A5", textDecoration: "none" }}>Create an objective →</Link>
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>

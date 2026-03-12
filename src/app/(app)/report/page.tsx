@@ -6,7 +6,7 @@ import PrintButton from "./PrintButton";
 
 const STATUS_STYLE: Record<string, { bg: string; color: string; label: string }> = {
   DONE:        { bg: "rgba(39,174,96,0.12)",   color: "#27AE60", label: "Done" },
-  IN_PROGRESS: { bg: "rgba(61,123,255,0.10)",  color: "#3D7BFF", label: "In Progress" },
+  IN_PROGRESS: { bg: "rgba(8,146,165,0.10)",  color: "#0892A5", label: "In Progress" },
   TODO:        { bg: "rgba(130,130,130,0.10)", color: "#828282", label: "To Do" },
 };
 
@@ -64,7 +64,7 @@ export default async function ReportPage() {
               <div className="okra-card" style={{ padding: 24, marginBottom: 12 }}>
                 <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 8 }}>
                   <h2 style={{ fontSize: 16, fontWeight: 700, color: "#0E1B3D" }}>{obj.title}</h2>
-                  <span style={{ fontSize: 24, fontWeight: 800, color: "#3D7BFF", letterSpacing: "-0.02em", marginLeft: 16, flexShrink: 0 }}>{obj.progress}%</span>
+                  <span style={{ fontSize: 24, fontWeight: 800, color: "#EB5757", letterSpacing: "-0.02em", marginLeft: 16, flexShrink: 0 }}>{obj.progress}%</span>
                 </div>
                 {obj.description && <p style={{ fontSize: 13, color: "#828282", marginBottom: 12 }}>{obj.description}</p>}
                 <Progress value={obj.progress} className="h-1.5" />
@@ -81,15 +81,15 @@ export default async function ReportPage() {
                             style={{
                               fontSize: 10, fontWeight: 700, fontFamily: "monospace",
                               padding: "2px 7px", borderRadius: 4,
-                              background: kr.type === "COUNT" ? "rgba(61,123,255,0.10)" : "rgba(130,130,130,0.10)",
-                              color: kr.type === "COUNT" ? "#3D7BFF" : "#828282",
+                              background: kr.type === "COUNT" ? "rgba(8,146,165,0.10)" : "rgba(130,130,130,0.10)",
+                              color: kr.type === "COUNT" ? "#0892A5" : "#828282",
                             }}
                           >
                             {kr.type === "COUNT" ? "#" : "%"}
                           </span>
                           <p style={{ fontSize: 14, fontWeight: 600, color: "#0E1B3D" }}>{kr.title}</p>
                         </div>
-                        <span style={{ fontSize: 13, fontWeight: 700, color: "#3D7BFF", flexShrink: 0, marginLeft: 16 }}>
+                        <span style={{ fontSize: 13, fontWeight: 700, color: "#EB5757", flexShrink: 0, marginLeft: 16 }}>
                           {kr.type === "COUNT" ? `${Math.round(kr.krProgress)} / ${kr.targetValue} ${kr.unit ?? ""}` : `${kr.progressPct}%`}
                         </span>
                       </div>

@@ -6,7 +6,7 @@ import { Progress } from "@/components/ui/progress";
 
 const STATUS_STYLE: Record<string, { bg: string; color: string; label: string }> = {
   DONE:        { bg: "rgba(39,174,96,0.12)",   color: "#27AE60", label: "Done" },
-  IN_PROGRESS: { bg: "rgba(61,123,255,0.10)",  color: "#3D7BFF", label: "In Progress" },
+  IN_PROGRESS: { bg: "rgba(8,146,165,0.10)",  color: "#0892A5", label: "In Progress" },
   TODO:        { bg: "rgba(130,130,130,0.10)", color: "#828282", label: "To Do" },
 };
 
@@ -40,6 +40,10 @@ export default async function DashboardPage() {
   const totalTasks = await prisma.task.count({ where: { userId } });
   const completionRate = totalTasks > 0 ? Math.round((doneCount / totalTasks) * 100) : 0;
 
+  const objectivesProgress = objectivesWithProgress.length > 0
+    ? Math.round(objectivesWithProgress.reduce((sum, obj) => sum + obj.progress, 0) / objectivesWithProgress.length)
+    : 0;
+
   return (
     <div style={{ maxWidth: 960, margin: "0 auto" }}>
       {/* Page header */}
@@ -64,7 +68,7 @@ export default async function DashboardPage() {
             {objectives.length}
           </p>
           <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px solid #F2F2F2" }}>
-            <Link href="/objectives" style={{ fontSize: 12, fontWeight: 600, color: "#3D7BFF", textDecoration: "none" }}>
+            <Link href="/objectives" style={{ fontSize: 12, fontWeight: 600, color: "#0892A5", textDecoration: "none" }}>
               View all →
             </Link>
           </div>
@@ -88,16 +92,16 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        {/* Completion Rate */}
+        {/* Objective Progress */}
         <div className="okra-card" style={{ padding: 24 }}>
           <p style={{ fontSize: 12, fontWeight: 600, color: "#828282", letterSpacing: "0.05em", textTransform: "uppercase", marginBottom: 12 }}>
-            Completion Rate
+            Objective Progress
           </p>
-          <p style={{ fontSize: 36, fontWeight: 800, color: "#3D7BFF", letterSpacing: "-0.03em", lineHeight: 1 }}>
-            {completionRate}%
+          <p style={{ fontSize: 36, fontWeight: 800, color: "#EB5757", letterSpacing: "-0.03em", lineHeight: 1 }}>
+            {objectivesProgress}%
           </p>
           <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px solid #F2F2F2" }}>
-            <Progress value={completionRate} className="h-1.5" />
+            <Progress value={objectivesProgress} className="h-1.5" />
           </div>
         </div>
 
@@ -113,7 +117,7 @@ export default async function DashboardPage() {
           {objectivesWithProgress.length === 0 ? (
             <div style={{ textAlign: "center", padding: "32px 0" }}>
               <p style={{ fontSize: 13, color: "#828282", marginBottom: 8 }}>No objectives yet.</p>
-              <Link href="/objectives/new" style={{ fontSize: 13, color: "#3D7BFF", fontWeight: 600, textDecoration: "none" }}>
+              <Link href="/objectives/new" style={{ fontSize: 13, color: "#0892A5", fontWeight: 600, textDecoration: "none" }}>
                 Create your first →
               </Link>
             </div>
@@ -129,7 +133,7 @@ export default async function DashboardPage() {
                     <span style={{ fontSize: 13, fontWeight: 600, color: "#0E1B3D", flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                       {obj.title}
                     </span>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: "#3D7BFF", marginLeft: 8, flexShrink: 0 }}>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: "#EB5757", marginLeft: 8, flexShrink: 0 }}>
                       {obj.progress}%
                     </span>
                   </div>

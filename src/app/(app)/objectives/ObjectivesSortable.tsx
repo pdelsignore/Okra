@@ -56,8 +56,8 @@ function SortableObjective({ obj }: { obj: Objective }) {
               <span
                 className="status-badge"
                 style={{
-                  background: obj.status === "ACTIVE" ? "rgba(61,123,255,0.10)" : "rgba(130,130,130,0.10)",
-                  color: obj.status === "ACTIVE" ? "#3D7BFF" : "#828282",
+                  background: obj.status === "ACTIVE" ? "rgba(8,146,165,0.10)" : "rgba(130,130,130,0.10)",
+                  color: obj.status === "ACTIVE" ? "#0892A5" : "#828282",
                   fontSize: 11,
                 }}
               >
@@ -74,7 +74,7 @@ function SortableObjective({ obj }: { obj: Objective }) {
             </p>
           </div>
           <div style={{ textAlign: "right", flexShrink: 0 }}>
-            <span style={{ fontSize: 28, fontWeight: 800, color: "#3D7BFF", letterSpacing: "-0.02em" }}>
+            <span style={{ fontSize: 28, fontWeight: 800, color: "#EB5757", letterSpacing: "-0.02em" }}>
               {obj.progress}%
             </span>
           </div>

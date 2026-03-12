@@ -33,7 +33,7 @@ export default function NewObjectivePage() {
   return (
     <div style={{ maxWidth: 560, margin: "0 auto" }}>
       <div style={{ marginBottom: 20 }}>
-        <Link href="/objectives" style={{ fontSize: 13, fontWeight: 600, color: "#3D7BFF", textDecoration: "none" }}>
+        <Link href="/objectives" style={{ fontSize: 13, fontWeight: 600, color: "#0892A5", textDecoration: "none" }}>
           ← Objectives
         </Link>
       </div>

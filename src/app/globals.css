@@ -46,14 +46,14 @@
   --radius-2xl: calc(var(--radius) * 2);
 }
 
-/* ─── Design Tokens (Profit.co spec) ─────────────────────────────────────── */
+/* ─── Design Tokens ───────────────────────────────────────────────────────── */
 :root {
-  /* Action Blue #3D7BFF */
-  --primary: oklch(0.565 0.238 263);
-  --primary-foreground: oklch(1 0 0);
+  /* Primary teal #0892A5 */
+  --primary: #0892A5;
+  --primary-foreground: #ffffff;
 
-  /* Page background #F4F7FE */
-  --background: oklch(0.977 0.010 258);
+  /* Page background — light warm teal tint */
+  --background: #f4fafb;
   --foreground: oklch(0.168 0.068 261);   /* Deep Navy #0E1B3D */
 
   /* Cards white */
@@ -63,16 +63,16 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.168 0.068 261);
 
-  /* Active tint #E9F0FF */
-  --secondary: oklch(0.956 0.042 263);
-  --secondary-foreground: oklch(0.565 0.238 263);
+  /* Active tint — light teal */
+  --secondary: #dff3f5;
+  --secondary-foreground: #0892A5;
 
   /* Muted / captions #828282 */
   --muted: oklch(0.964 0.005 258);
   --muted-foreground: oklch(0.565 0 0);
 
-  --accent: oklch(0.956 0.042 263);
-  --accent-foreground: oklch(0.565 0.238 263);
+  --accent: #dff3f5;
+  --accent-foreground: #0892A5;
 
   /* Destructive #EB5757 */
   --destructive: oklch(0.618 0.200 27);
@@ -80,13 +80,13 @@
   /* Border #F2F2F2 */
   --border: oklch(0.956 0 0);
   --input: oklch(0.956 0 0);
-  --ring: oklch(0.565 0.238 263);
+  --ring: #0892A5;
 
   /* Charts */
-  --chart-1: oklch(0.565 0.238 263);   /* action blue */
-  --chart-2: oklch(0.520 0.200 290);   /* violet #6C5DD3 */
-  --chart-3: oklch(0.760 0.140 195);   /* light blue #56CCF2 */
-  --chart-4: oklch(0.640 0.167 144);   /* positive green */
+  --chart-1: #0892A5;   /* primary teal */
+  --chart-2: #BB7E5D;   /* warm brown */
+  --chart-3: #0CA4A5;   /* lighter teal */
+  --chart-4: #DBB68F;   /* warm sand */
   --chart-5: oklch(0.618 0.200 27);    /* alert red */
 
   /* 16px radius per spec */
@@ -95,12 +95,12 @@
   /* Sidebar (white) */
   --sidebar: oklch(1 0 0);
   --sidebar-foreground: oklch(0.565 0 0);
-  --sidebar-primary: oklch(0.565 0.238 263);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.956 0.042 263);
-  --sidebar-accent-foreground: oklch(0.565 0.238 263);
+  --sidebar-primary: #06908F;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #dff3f5;
+  --sidebar-accent-foreground: #06908F;
   --sidebar-border: oklch(0.956 0 0);
-  --sidebar-ring: oklch(0.565 0.238 263);
+  --sidebar-ring: #06908F;
 }
 
 @layer base {
@@ -127,9 +127,9 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Progress bar blue fill */
+/* Progress bar fill */
 [data-slot="progress-indicator"] {
-  background: #3D7BFF;
+  background: #EB5757;
 }
 
 /* Primary button style */
@@ -137,7 +137,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #3D7BFF;
+  background: #0892A5;
   color: #ffffff;
   font-weight: 600;
   font-size: 13px;
@@ -148,7 +148,7 @@
   transition: background 0.15s, opacity 0.15s;
   white-space: nowrap;
 }
-.btn-primary:hover { background: #2d6ae8; }
+.btn-primary:hover { background: #06908F; }
 .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
 
 /* Outline button */
@@ -183,8 +183,8 @@
 }
 .okra-input::placeholder { color: #B0BAC9; }
 .okra-input:focus {
-  border-color: #3D7BFF;
-  box-shadow: 0 0 0 3px rgba(61, 123, 255, 0.12);
+  border-color: #0892A5;
+  box-shadow: 0 0 0 3px rgba(8, 146, 165, 0.12);
 }
 .okra-input:disabled {
   background: #F4F7FE;

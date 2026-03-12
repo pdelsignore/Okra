@@ -83,7 +83,7 @@ export default function NewTaskPage() {
   return (
     <div style={{ maxWidth: 560, margin: "0 auto" }}>
       <div style={{ marginBottom: 20 }}>
-        <Link href="/tasks" style={{ fontSize: 13, fontWeight: 600, color: "#3D7BFF", textDecoration: "none" }}>← Tasks</Link>
+        <Link href="/tasks" style={{ fontSize: 13, fontWeight: 600, color: "#0892A5", textDecoration: "none" }}>← Tasks</Link>
       </div>
 
       <div className="okra-card" style={{ padding: 28 }}>
@@ -100,8 +100,8 @@ export default function NewTaskPage() {
 
           {/* Auto-alignment preview */}
           {!useManual && (suggestions.length > 0 || previewLoading) && (
-            <div style={{ background: "rgba(61,123,255,0.05)", border: "1.5px solid rgba(61,123,255,0.15)", borderRadius: 12, padding: 16, display: "flex", flexDirection: "column", gap: 12 }}>
-              <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: "#3D7BFF" }}>
+            <div style={{ background: "rgba(8,146,165,0.05)", border: "1.5px solid rgba(8,146,165,0.15)", borderRadius: 12, padding: 16, display: "flex", flexDirection: "column", gap: 12 }}>
+              <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase", color: "#0892A5" }}>
                 {previewLoading ? "Finding alignment…" : "Suggested alignment"}
               </p>
               {suggestions.map((s) => (
@@ -112,13 +112,13 @@ export default function NewTaskPage() {
                       <span style={{ fontSize: 11, color: "#828282", marginLeft: 8 }}>{s.objectiveTitle}</span>
                     </div>
                     {s.keyResultType === "COUNT" ? (
-                      <span style={{ fontSize: 11, fontWeight: 600, background: "rgba(61,123,255,0.10)", color: "#3D7BFF", padding: "3px 8px", borderRadius: 6, fontFamily: "monospace" }}>1 unit</span>
+                      <span style={{ fontSize: 11, fontWeight: 600, background: "rgba(8,146,165,0.10)", color: "#0892A5", padding: "3px 8px", borderRadius: 6, fontFamily: "monospace" }}>1 unit</span>
                     ) : (
-                      <span style={{ fontSize: 13, fontWeight: 700, color: "#3D7BFF" }}>{suggestionPct}%</span>
+                      <span style={{ fontSize: 13, fontWeight: 700, color: "#EB5757" }}>{suggestionPct}%</span>
                     )}
                   </div>
                   {s.keyResultType === "PERCENTAGE" && (
-                    <input type="range" min={5} max={100} step={5} value={suggestionPct} onChange={(e) => setSuggestionPct(Number(e.target.value))} style={{ width: "100%", accentColor: "#3D7BFF" }} />
+                    <input type="range" min={5} max={100} step={5} value={suggestionPct} onChange={(e) => setSuggestionPct(Number(e.target.value))} style={{ width: "100%", accentColor: "#EB5757" }} />
                   )}
                 </div>
               ))}
@@ -136,7 +136,7 @@ export default function NewTaskPage() {
             {showManual && (
               <div style={{ display: "flex", flexDirection: "column", gap: 10, paddingTop: 12 }}>
                 {manualAlignments.map((m) => (
-                  <div key={m.keyResultId} style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8, background: "rgba(61,123,255,0.06)", border: "1px solid rgba(61,123,255,0.15)", borderRadius: 10, padding: "10px 12px" }}>
+                  <div key={m.keyResultId} style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8, background: "rgba(8,146,165,0.06)", border: "1px solid rgba(8,146,165,0.15)", borderRadius: 10, padding: "10px 12px" }}>
                     <div>
                       <p style={{ fontSize: 12, fontWeight: 600, color: "#0E1B3D" }}>{m.kpiTitle || m.keyResultTitle}</p>
                       <p style={{ fontSize: 11, color: "#828282" }}>{m.objectiveTitle} · {m.keyResultType === "COUNT" ? "1 unit" : `${m.contribution}%`}</p>
@@ -170,8 +170,8 @@ export default function NewTaskPage() {
                     </p>
                   ) : selectedKrId ? (
                     <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                      <input type="range" min={5} max={100} step={5} value={manualPct} onChange={(e) => setManualPct(Number(e.target.value))} style={{ flex: 1, accentColor: "#3D7BFF" }} />
-                      <span style={{ fontSize: 12, fontWeight: 700, color: "#3D7BFF", width: 32, textAlign: "right" }}>{manualPct}%</span>
+                      <input type="range" min={5} max={100} step={5} value={manualPct} onChange={(e) => setManualPct(Number(e.target.value))} style={{ flex: 1, accentColor: "#EB5757" }} />
+                      <span style={{ fontSize: 12, fontWeight: 700, color: "#EB5757", width: 32, textAlign: "right" }}>{manualPct}%</span>
                     </div>
                   ) : null}
 
@@ -181,7 +181,7 @@ export default function NewTaskPage() {
                 </div>
 
                 {useManual && (
-                  <p style={{ fontSize: 11, fontWeight: 600, color: "#3D7BFF" }}>Manual alignment will override auto-detection.</p>
+                  <p style={{ fontSize: 11, fontWeight: 600, color: "#0892A5" }}>Manual alignment will override auto-detection.</p>
                 )}
               </div>
             )}

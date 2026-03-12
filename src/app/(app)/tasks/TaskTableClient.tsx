@@ -38,7 +38,7 @@ const STATUS_OPTIONS = ["TODO", "IN_PROGRESS", "DONE"];
 
 const STATUS_STYLE: Record<string, { bg: string; color: string; label: string }> = {
   DONE:        { bg: "rgba(39,174,96,0.12)",   color: "#27AE60", label: "Done" },
-  IN_PROGRESS: { bg: "rgba(61,123,255,0.10)",  color: "#3D7BFF", label: "In Progress" },
+  IN_PROGRESS: { bg: "rgba(8,146,165,0.10)",  color: "#0892A5", label: "In Progress" },
   TODO:        { bg: "rgba(130,130,130,0.10)", color: "#828282", label: "To Do" },
 };
 
@@ -225,7 +225,7 @@ export default function TaskTableClient({ tasks: initial }: { tasks: Task[] }) {
                             {" "}· {top.contribution}%
                           </span>
                         )}
-                        {top.isOverridden && <span style={{ color: "#3D7BFF" }}> ✎</span>}
+                        {top.isOverridden && <span style={{ color: "#0892A5" }}> ✎</span>}
                       </span>
                     ) : (
                       <span style={{ fontSize: 11, color: "#C8D0DC" }}>No alignment</span>
@@ -263,7 +263,7 @@ export default function TaskTableClient({ tasks: initial }: { tasks: Task[] }) {
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
                       <button
                         onClick={() => openEdit(task)}
-                        style={{ fontSize: 12, color: "#3D7BFF", fontWeight: 600, background: "none", border: "none", cursor: "pointer" }}
+                        style={{ fontSize: 12, color: "#0892A5", fontWeight: 600, background: "none", border: "none", cursor: "pointer" }}
                       >
                         Edit
                       </button>
@@ -353,7 +353,7 @@ export default function TaskTableClient({ tasks: initial }: { tasks: Task[] }) {
                         {a.keyResult.type === "COUNT" ? (
                           <span style={{ fontSize: 13, color: "#828282" }}>1 unit</span>
                         ) : (
-                          <span style={{ fontSize: 13, fontWeight: 600, color: "#3D7BFF", width: 36, textAlign: "right" }}>{a.contribution}%</span>
+                          <span style={{ fontSize: 13, fontWeight: 600, color: "#EB5757", width: 36, textAlign: "right" }}>{a.contribution}%</span>
                         )}
                         <button onClick={() => removeAlignment(a.id)} style={{ fontSize: 12, color: "#EB5757", background: "none", border: "none", cursor: "pointer" }}>✕</button>
                       </div>
@@ -432,7 +432,7 @@ export default function TaskTableClient({ tasks: initial }: { tasks: Task[] }) {
                     <div>
                       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
                         <label className="okra-label" style={{ marginBottom: 0 }}>Contribution</label>
-                        <span style={{ fontSize: 12, fontWeight: 600, color: "#3D7BFF" }}>{manualPct}%</span>
+                        <span style={{ fontSize: 12, fontWeight: 600, color: "#EB5757" }}>{manualPct}%</span>
                       </div>
                       <Slider
                         value={[manualPct]}

@@ -61,8 +61,8 @@ export default function Sidebar({ user }: { user: { name: string; email: string 
                 borderRadius: 999,
                 fontSize: 14,
                 fontWeight: active ? 600 : 500,
-                color: active ? "#3D7BFF" : "#828282",
-                background: active ? "#E9F0FF" : "transparent",
+                color: active ? "#0892A5" : "#828282",
+                background: active ? "#dff3f5" : "transparent",
                 textDecoration: "none",
                 transition: "background 0.12s, color 0.12s",
               }}
@@ -91,7 +91,7 @@ export default function Sidebar({ user }: { user: { name: string; email: string 
         <div className="flex items-center gap-2.5 mb-3">
           <div
             className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
-            style={{ background: "#E9F0FF", color: "#3D7BFF" }}
+            style={{ background: "#dff3f5", color: "#0892A5" }}
           >
             {user.name.charAt(0).toUpperCase()}
           </div>
