@@ -41,7 +41,7 @@ export default async function DashboardPage() {
   const completionRate = totalTasks > 0 ? Math.round((doneCount / totalTasks) * 100) : 0;
 
   const objectivesProgress = objectivesWithProgress.length > 0
-    ? Math.round(objectivesWithProgress.reduce((sum: number, obj) => sum + obj.progress, 0) / objectivesWithProgress.length)
+    ? Math.round(objectivesWithProgress.reduce((sum: number, obj: { progress: number }) => sum + obj.progress, 0) / objectivesWithProgress.length)
     : 0;
 
   return (
