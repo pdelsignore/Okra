@@ -1,5 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 import { PrismaNeon } from "@prisma/adapter-neon";
+import { neonConfig } from "@neondatabase/serverless";
+
+// Use HTTP fetch instead of WebSocket — required for serverless (no `ws` package needed)
+neonConfig.poolQueryViaFetch = true;
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
@@ -13,16 +17,6 @@ function createPrismaClient() {
   });
 }
 
-function getPrisma(): PrismaClient {
-  if (!globalForPrisma.prisma) {
-    globalForPrisma.prisma = createPrismaClient();
-  }
-  return globalForPrisma.prisma;
-}
+export const prisma = globalForPrisma.prisma ?? createPrismaClient();
 
-// Lazy proxy — client is only instantiated on first DB call, not at module import
-export const prisma = new Proxy({} as PrismaClient, {
-  get(_, prop: string | symbol) {
-    return (getPrisma() as unknown as Record<string | symbol, unknown>)[prop];
-  },
-});
+if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
