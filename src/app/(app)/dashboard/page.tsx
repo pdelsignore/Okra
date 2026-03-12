@@ -30,7 +30,7 @@ export default async function DashboardPage() {
   });
 
   const objectivesWithProgress = await Promise.all(
-    objectives.map(async (obj) => ({
+    objectives.map(async (obj: (typeof objectives)[number]) => ({
       ...obj,
       progress: await getObjectiveProgress(obj.id),
     }))

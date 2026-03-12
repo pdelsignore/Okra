@@ -162,7 +162,7 @@ export default function TaskTableClient({ tasks: initial }: { tasks: Task[] }) {
     const newAlignment = await res.json();
     setEditAlignments((prev) => [...prev, newAlignment]);
     setTasks((prev) =>
-      prev.map((t) => t.id === editTask.id ? { ...t, alignments: [...t.alignments, newAlignment] } : t)
+      prev.map((t) => t.id === editTask!.id ? { ...t, alignments: [...t.alignments, newAlignment] } : t)
     );
     setSelectedKrId(""); setSelectedKpiId(""); setManualPct(100);
   }
