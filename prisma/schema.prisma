@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id           String      @id @default(cuid())
+  email        String      @unique
+  name         String
+  passwordHash String
+  shareToken   String      @unique @default(cuid())
+  createdAt    DateTime    @default(now())
+  objectives   Objective[]
+  tasks        Task[]
+  sessions     Session[]
+  accounts     Account[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Objective {
+  id          String      @id @default(cuid())
+  userId      String
+  title       String
+  description String?
+  status      String      @default("ACTIVE") // ACTIVE | COMPLETED | PAUSED
+  order       Int         @default(0)
+  createdAt   DateTime    @default(now())
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  keyResults  KeyResult[]
+}
+
+model KeyResult {
+  id          String         @id @default(cuid())
+  objectiveId String
+  title       String
+  description String?
+  type        String         @default("PERCENTAGE")  // "COUNT" | "PERCENTAGE"
+  targetValue Float
+  unit        String?        // %, $, count, etc.
+  order       Int            @default(0)
+  createdAt   DateTime       @default(now())
+  objective   Objective      @relation(fields: [objectiveId], references: [id], onDelete: Cascade)
+  kpis        KPI[]
+  alignments  TaskAlignment[]
+}
+
+model KPI {
+  id          String         @id @default(cuid())
+  keyResultId String
+  title       String
+  description String?
+  keywords    String         // comma-separated terms for alignment
+  order       Int            @default(0)
+  createdAt   DateTime       @default(now())
+  keyResult   KeyResult      @relation(fields: [keyResultId], references: [id], onDelete: Cascade)
+  alignments  TaskAlignment[]
+}
+
+model Task {
+  id          String         @id @default(cuid())
+  userId      String
+  title       String
+  description String?
+  status      String         @default("TODO") // TODO | IN_PROGRESS | DONE
+  completedAt DateTime?
+  createdAt   DateTime       @default(now())
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  alignments  TaskAlignment[]
+}
+
+model TaskAlignment {
+  id           String    @id @default(cuid())
+  taskId       String
+  kpiId        String?
+  keyResultId  String
+  contribution Float     // 0-100, user-facing value
+  isOverridden Boolean   @default(false)
+  confidence   Float     // raw algorithm score
+  createdAt    DateTime  @default(now())
+  task         Task      @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  kpi          KPI?      @relation(fields: [kpiId], references: [id], onDelete: Cascade)
+  keyResult    KeyResult @relation(fields: [keyResultId], references: [id], onDelete: Cascade)
+}
